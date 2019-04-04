@@ -69,3 +69,21 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+---------------------------------------------------------------------------------------
+
+### Deploy on Heroku
+
+Login into the heroku account using heroku cli
+run command `heroku login` and enter your credentials.
+
+After login we need to create a new app on heroku
+`heroku create reactant-tutorial --buildpack https://github.com/mars/create-react-app-buildpack.git`
+
+Run above command and give your app a name where I gave `reactant-tutorial`.
+
+We are using a [buildpack](https://github.com/mars/create-react-app-buildpack) which will allow us to run the application same as we do in our local.
+
+After creating an app we need to set an environment variable as we did in the local inside our start script in `package.json` file
+use following command to set an environment variable in heroku account
+`heroku config:set REACT_APP_GRAPHQL_ENDPOINT=https://api.graph.cool/relay/v1/cju19xslr20rp0186qmasd3mt`.
