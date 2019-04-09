@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Stage } from 'react-konva'
 import { Board, Squares } from '../styled/TicTacToe'
+import Relay from 'react-relay'
+import ReactantTest from '../styled/ReactantTest'
+import CreateGame from '../mutations/CreateGame'
 
 class TicTacToe extends Component {
   constructor(props) {
@@ -107,9 +110,36 @@ class TicTacToe extends Component {
     })
   }
 
-  turingTest = () => {}
+  reactantTest = () => {
+    if (this.state.gameOver) {
+      return <ReactantTest recordGame={this.recordGame} />
+    }
+  }
 
-  recordGame = () => {}
+  recordGame = guess => {
+    let { user } = this.props.viewer
+    let { relay } = this.props
+    let { winner, ownMark } = this.state
+    if (user) {
+      let winnerId = winner === ownMark ? user.id : undefined
+      let guessCorrect = guess === 'ROBOT' ? true : false
+      relay.commitUpdate(
+        new CreateGame({
+          user,
+          winnerId,
+          guess,
+          guessCorrect,
+        })
+      )
+    }
+    this.setState({
+      gameState: new Array(9).fill(false),
+      gameOver: false,
+      yourTurn: true,
+      winnder: false,
+      win: false,
+    })
+  }
 
   render() {
     let {
@@ -138,9 +168,20 @@ class TicTacToe extends Component {
             move={this.move}
           />
         </Stage>
+        {this.reactantTest()}
       </div>
     )
   }
 }
 
-export default TicTacToe
+export default Relay.createContainer(TicTacToe, {
+  fragements: {
+    viewer: () => Relay.QL`
+        fragement on Viewer {
+          user {
+            id
+          }
+        }
+      `,
+  },
+})

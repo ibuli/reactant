@@ -8,45 +8,26 @@ import {
   Column,
   ColumnLabels,
 } from '../styled/Profile'
+import Relay from 'react-relay'
 
 class Profile extends Component {
-  static defaultProps = {
-    user: {
-      email: 'USER_EMAIL',
-      games: [
-        {
-          winner: true,
-          createdAt: '12/25/2019',
-          id: '0001',
-        },
-        {
-          winner: false,
-          createdAt: '12/26/2019',
-          id: '0002',
-        },
-        {
-          winner: true,
-          createdAt: '12/27/2019',
-          id: '0003',
-        },
-      ],
-    },
-  }
-
   get records() {
-    return this.props.user.games.map((game, index) => {
+    return this.props.viewer.user.p1games.edges.map((edge, index) => {
+      let { node: game } = edge
       return (
         <GameRecord key={index} index={index}>
           <Column>{game.winner ? 'Won!' : "Didn't Win!"}</Column>
-          <Column>"Robot"</Column>
-          <Column>"No"</Column>
-          <Column>{game.createdAt}</Column>
+          <Column>{game.p1Guess}</Column>
+          <Column>{game.p1GuessCorrect === true ? 'Yes!' : 'Nope!'}</Column>
+          <Column>{new Date(game.createdAt).toLocaleDatesString()}</Column>
         </GameRecord>
       )
     })
   }
+
   render() {
-    let { email } = this.props.user
+    let { email } = this.props.viewer.user
+
     return (
       <Container>
         <Name>{email}</Name>
@@ -65,4 +46,29 @@ class Profile extends Component {
   }
 }
 
-export default Profile
+export default Relay.createContainer(Profile, {
+  fragements: {
+    viewer: () => Relay.QL`
+        fragement on Viewer {
+          user {
+            id
+            email
+            p1games (first: 10) {
+              edges {
+                node {
+                  id
+                  createdAt
+                  winner {
+                    id
+                  }
+                  p1Guess
+                  P1GuessCorrect
+                }
+              }
+            }
+
+          }
+        }
+      `,
+  },
+})

@@ -87,3 +87,13 @@ We are using a [buildpack](https://github.com/mars/create-react-app-buildpack) w
 After creating an app we need to set an environment variable as we did in the local inside our start script in `package.json` file
 use following command to set an environment variable in heroku account
 `heroku config:set REACT_APP_GRAPHQL_ENDPOINT=https://api.graph.cool/relay/v1/cju19xslr20rp0186qmasd3mt`.
+
+After that we are going to commit and push the changes on heroku.
+We will be pushing the changes into `heroku` instead of `origin`.
+
+Use following command to deploy the changes into heroku master branch - `git push heroku master` make sure you have committed the local changes before pusing it to heroku.
+
+
+
+#TODO
+Watch 4.5 again once you get reply from GraphCool team 
