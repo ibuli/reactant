@@ -6704,3 +6704,13 @@ patch:
         patched: '2019-07-18T05:18:23.452Z'
     - react-scripts > jest > jest-cli > @jest/core > @jest/reporters > jest-runtime > jest-config > @jest/test-sequencer > jest-runner > jest-jasmine2 > @jest/environment > @jest/transform > babel-plugin-istanbul > istanbul-lib-instrument > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
         patched: '2019-07-18T05:18:23.452Z'
+    - snyk > snyk-nuget-plugin > dotnet-deps-parser > lodash:
+        patched: '2019-09-11T00:00:24.025Z'
+    - snyk > snyk-config > lodash:
+        patched: '2019-09-11T00:00:24.025Z'
+    - snyk > @snyk/dep-graph > graphlib > lodash:
+        patched: '2019-09-11T00:00:24.025Z'
+    - snyk > snyk-go-plugin > graphlib > lodash:
+        patched: '2019-09-11T00:00:24.025Z'
+    - snyk > snyk-nodejs-lockfile-parser > graphlib > lodash:
+        patched: '2019-09-11T00:00:24.025Z'
