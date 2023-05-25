@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "auth0-lock": "^11.21.0",
+    "auth0-lock": "^11.33.0",
     "konva": "^3.2.4",
     "material-ui": "^0.20.2",
     "react": "^16.8.5",
@@ -13,16 +13,16 @@
     "react-relay-network-layer": "^2.2.1",
     "react-router": "^3.0.2",
     "react-router-relay": "^0.14.0",
-    "react-scripts": "3.3.0",
+    "react-scripts": "5.0.0",
     "styled-components": "^4.2.0",
-    "snyk": "^1.258.1"
+    "@snyk/protect": "latest"
   },
   "scripts": {
     "start": "set REACT_APP_GRAPHQL_ENDPOINT=https://api.graph.cool/relay/v1/cju19xslr20rp0186qmasd3mt&&react-scripts start",
     "build": "set REACT_APP_GRAPHQL_ENDPOINT=https://api.graph.cool/relay/v1/cju19xslr20rp0186qmasd3mt&&react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "snyk-protect": "snyk protect",
+    "snyk-protect": "snyk-protect",
     "prepublish": "yarn run snyk-protect"
   },
   "husky": {
