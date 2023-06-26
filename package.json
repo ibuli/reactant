@@ -15,14 +15,14 @@
     "react-router-relay": "^0.14.0",
     "react-scripts": "5.0.0",
     "styled-components": "^4.2.0",
-    "snyk": "^1.685.0"
+    "@snyk/protect": "latest"
   },
   "scripts": {
     "start": "set REACT_APP_GRAPHQL_ENDPOINT=https://api.graph.cool/relay/v1/cju19xslr20rp0186qmasd3mt&&react-scripts start",
     "build": "set REACT_APP_GRAPHQL_ENDPOINT=https://api.graph.cool/relay/v1/cju19xslr20rp0186qmasd3mt&&react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "snyk-protect": "snyk protect",
+    "snyk-protect": "snyk-protect",
     "prepublish": "yarn run snyk-protect"
   },
   "husky": {
