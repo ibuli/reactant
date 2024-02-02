@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "auth0-lock": "^11.21.0",
+    "auth0-lock": "^11.30.5",
     "konva": "^3.2.4",
     "material-ui": "^0.20.2",
     "react": "^16.8.5",
